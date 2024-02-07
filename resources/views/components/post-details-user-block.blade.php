@@ -3,13 +3,13 @@
         <div class="post-details__avatar user__avatar">
             <a class="post-details__avatar-link user__avatar-link" href="#">
                 <img class="post-details__picture user__picture"
-                     src="img/userpic-elvira.jpg"
+                     src="{{asset("storage/avatars/".$post->user->avatar)}}"
                      alt="Аватар пользователя">
             </a>
         </div>
         <div class="post-details__name-wrapper user__name-wrapper">
             <a class="post-details__name user__name" href="#">
-                <span>Эльвира Хайпулинова</span>
+                <span>{{$post->user->login}}</span>
             </a>
             <time class="post-details__time user__time" datetime="2014-03-20">5 лет на сайте
             </time>

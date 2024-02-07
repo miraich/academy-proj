@@ -10,5 +10,7 @@
         @include('components.post-details-indicators')
         @include('components.post-details-comments')
     </div>
-    @include('components.post-details-user-block')
+    @if(auth()->user()->id!==$post->author)
+        @include('components.post-details-user-block')
+    @endif
 </div>

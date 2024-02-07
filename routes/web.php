@@ -39,4 +39,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/post/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('show_post');
     Route::get('/profile', [\App\Http\Controllers\UserController::class, 'show_profile'])->name('profile');
     Route::get('/messages', [\App\Http\Controllers\UserController::class, 'show_messages'])->name('messages');
+    Route::get('/popular', [\App\Http\Controllers\FeedController::class, 'popular'])->name('popular');
 });
