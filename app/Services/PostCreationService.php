@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Actions\NotifySubscribedAction;
 use App\Enums\CategoryEnum;
 use App\Http\Requests\PostLinkRequest;
 use App\Http\Requests\PostPhotoRequest;
@@ -12,6 +13,7 @@ use App\Interfaces\DownloadFileInterface;
 use App\Interfaces\PostInterface;
 use App\Interfaces\TagCreationInteface;
 use App\Interfaces\ThumbnailRepository;
+use App\Jobs\Mail;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +22,10 @@ class PostCreationService implements PostInterface
 
     public int $postId;
 
-    public function __construct(private readonly DownloadFileInterface $fileService,
-                                private readonly TagCreationInteface   $tagService,
-                                private readonly ThumbnailRepository   $thumbnailService)
+    public function __construct(private readonly DownloadFileInterface  $fileService,
+                                private readonly TagCreationInteface    $tagService,
+                                private readonly ThumbnailRepository    $thumbnailService,
+                                private readonly NotifySubscribedAction $notifySubscribedAction)
     {
 
     }
@@ -49,6 +52,7 @@ class PostCreationService implements PostInterface
                 $this->tagService->create_tags_db($post);
                 $this->postId = $post->id;
 
+                $this->notifySubscribedAction->handle($post);
                 break;
 
             case $request instanceof PostVideoRequest:
@@ -62,6 +66,8 @@ class PostCreationService implements PostInterface
                 $this->tagService->set_tags($request->input('tags'));
                 $this->tagService->create_tags_db($post);
                 $this->postId = $post->id;
+
+                $this->notifySubscribedAction->handle($post);
 
                 break;
 
@@ -77,6 +83,8 @@ class PostCreationService implements PostInterface
                 $this->tagService->create_tags_db($post);
                 $this->postId = $post->id;
 
+                $this->notifySubscribedAction->handle($post);
+
                 break;
 
             case $request instanceof PostQuoteRequest:
@@ -91,6 +99,8 @@ class PostCreationService implements PostInterface
                 $this->tagService->set_tags($request->input('tags'));
                 $this->tagService->create_tags_db($post);
                 $this->postId = $post->id;
+
+                $this->notifySubscribedAction->handle($post);
 
                 break;
 
@@ -109,6 +119,8 @@ class PostCreationService implements PostInterface
                     'img' => $this->thumbnailService->preview_path
                 ]);
                 $this->postId = $post->id;
+
+                $this->notifySubscribedAction->handle($post);
 
                 break;
         }

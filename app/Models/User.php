@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Termwind\Components\Li;
 
 class User extends Authenticatable
 {
@@ -44,9 +45,24 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function likes(int $post_id)
+    {
+        return $this->hasMany(Like::class)->where('post_id', $post_id);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'author');
+    }
+
+    public function subscriber(int $author_id)
+    {
+        return $this->hasMany(Subscription::class, 'subscriber')->where('author', $author_id);
     }
 
 

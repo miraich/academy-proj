@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/adding-post-text', [\App\Http\Controllers\PostController::class, 'create_post_text'])->name('create_post_text');
     Route::post('/adding-post-quote', [\App\Http\Controllers\PostController::class, 'create_post_quote'])->name('create_post_quote');
     Route::post('/adding-post-link', [\App\Http\Controllers\PostController::class, 'create_post_link'])->name('create_post_link');
+    Route::post('/user/{id}/subscribe', [\App\Http\Controllers\SubscribeController::class, 'subscribe'])->name('subscribe');
+    Route::post('/user/{id}/unsubscribe', [\App\Http\Controllers\SubscribeController::class, 'unsubscribe'])->name('unsubscribe');
+    Route::post('/post/{post_id}/comment', [\App\Http\Controllers\CommentController::class, 'create'])->name('create_comment');
+    Route::post('/post/{post_id}/like', [\App\Http\Controllers\LikeController::class, 'create'])->name('like');
 
     Route::get('/adding-post-photo', [\App\Http\Controllers\PostController::class, 'show_adding_post_photo'])->name('show_adding_post_photo');
     Route::get('/adding-post-video', [\App\Http\Controllers\PostController::class, 'show_adding_post_video'])->name('show_adding_post_video');
@@ -37,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adding-post-link', [\App\Http\Controllers\PostController::class, 'show_adding_post_link'])->name('show_adding_post_link');
     Route::get('/feed', [\App\Http\Controllers\FeedController::class, 'index'])->name('feed');
     Route::get('/post/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('show_post');
-    Route::get('/profile', [\App\Http\Controllers\UserController::class, 'show_profile'])->name('profile');
+    Route::get('/profile/{user}', [\App\Http\Controllers\UserController::class, 'show_profile'])->name('profile');
     Route::get('/messages', [\App\Http\Controllers\UserController::class, 'show_messages'])->name('messages');
-    Route::get('/popular', [\App\Http\Controllers\FeedController::class, 'popular'])->name('popular');
+    Route::get('/popular', [\App\Http\Controllers\PopularController::class, 'index'])->name('popular');
 });

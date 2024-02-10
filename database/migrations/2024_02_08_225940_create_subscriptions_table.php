@@ -10,10 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('post_tag', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('author')->unique()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('subscriber')->constrained('users')->cascadeOnDelete();
             $table->timestampsTz();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tag_post');
+        Schema::dropIfExists('subscriptions');
     }
 };

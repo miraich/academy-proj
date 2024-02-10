@@ -21,6 +21,11 @@ class Post extends Model
         'views',
     ];
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class,'post_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -30,4 +35,11 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+    }
+
+
 }
