@@ -26,9 +26,9 @@ class PostPhotoRequest extends FormRequest
     {
         return [
             'photo_heading' => 'required|string',
-            'link' => ['required_without:userpic-file-photo', 'url', new CheckLinkRule, 'nullable'],
+            'link' => ['nullable', new CheckLinkRule,],
             'tags' => ['required', 'string', 'regex:|^(#[a-zA-Zа-яА-Я0-9]+ *)+$|'],
-            'userpic-file-photo' => ['sometimes', 'image']
+            'userpic-file-photo' => ['required_without:link', 'image']
         ];
     }
 
@@ -41,7 +41,7 @@ class PostPhotoRequest extends FormRequest
     {
         return [
             'link.required' => 'Загрузите файл, либо введите ссылку',
-            'tags.regex'=>'Теги должны быть разделены пробелом и начинаться с #'
+            'tags.regex' => 'Теги должны быть разделены пробелом и начинаться с #'
         ];
     }
 }

@@ -53,7 +53,5 @@
             {{--                    <sup class="comments__amount">45</sup>--}}
             {{--                </a>--}}
         </div>
-
     @endif
-{{--    @php         ddd(); @endphp--}}
 </div>

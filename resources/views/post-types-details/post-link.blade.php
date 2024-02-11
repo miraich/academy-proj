@@ -16,6 +16,7 @@
             </div>
         </div>
         @include('components.post-details-indicators')
+        @include('components.post-tags')
         @include('components.post-details-comments')
     </div>
     @if(auth()->user()->id!==$post->author)

@@ -44,4 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{user}', [\App\Http\Controllers\UserController::class, 'show_profile'])->name('profile');
     Route::get('/messages', [\App\Http\Controllers\UserController::class, 'show_messages'])->name('messages');
     Route::get('/popular', [\App\Http\Controllers\PopularController::class, 'index'])->name('popular');
+    Route::get('/feed/{category}', [\App\Http\Controllers\SearchController::class, 'search_by_category'])->name('search_by_category');
+    Route::get('/search/', [\App\Http\Controllers\SearchController::class, 'search_by_tag_or_content'])->name('search_by_tag_or_content');
 });

@@ -120,6 +120,7 @@
                                         </a>
                                     </div>
                                     @include('components.post-details-indicators')
+                                    @include('components.post-tags')
                                 </footer>
                             </article>
                             @break
@@ -173,6 +174,7 @@
                                         </a>
                                     </div>
                                     @include('components.post-details-indicators')
+                                    @include('components.post-tags')
                                 </footer>
                             </article>
                             @break
@@ -203,6 +205,7 @@
                                         </a>
                                     </div>
                                     @include('components.post-details-indicators')
+                                    @include('components.post-tags')
                                 </footer>
                             </article>
                             @break
@@ -235,6 +238,7 @@
                                         </a>
                                     </div>
                                     @include('components.post-details-indicators')
+                                    @include('components.post-tags')
                                 </footer>
                             </article>
                             @break
@@ -274,6 +278,7 @@
                                         </a>
                                     </div>
                                     @include('components.post-details-indicators')
+                                    @include('components.post-tags')
                                 </footer>
                             </article>
                             @break

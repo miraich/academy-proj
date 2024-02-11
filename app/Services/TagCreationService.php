@@ -13,6 +13,7 @@ class TagCreationService implements TagCreationInteface
     public function set_tags(string $tags_request): void
     {
         $temp = str_replace(' ', '', $tags_request);
+        $temp = substr($temp, 1);
         $this->tags = explode('#', $temp);
     }
 
@@ -25,7 +26,7 @@ class TagCreationService implements TagCreationInteface
     {
         foreach ($this->get_tags() as $tag) {
             $tag = Tag::firstOrCreate([
-                'name' => '#' . $tag
+                'name' => $tag
             ]);
 
             $post->tags()->attach($tag);

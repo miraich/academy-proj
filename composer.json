@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
+        "laravel/scout": "^10.8",
         "laravel/tinker": "^2.8",
         "ralouphie/mimey": "^1.0"
     },

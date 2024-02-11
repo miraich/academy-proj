@@ -313,12 +313,12 @@
                 </div>
                 <ul class="feed__filters filters">
                     <li class="feed__filters-item filters__item">
-                        <a class="filters__button filters__button--active" href="#">
+                        <a class="filters__button filters__button--active" href="{{route('search_by_category','&category=all')}}">
                             <span>Все</span>
                         </a>
                     </li>
                     <li class="feed__filters-item filters__item">
-                        <a class="filters__button filters__button--photo button" href="#">
+                        <a class="filters__button filters__button--photo button" href="{{route('search_by_category','&category=photo')}}">
                             <span class="visually-hidden">Фото</span>
                             <img src="img/icon-filter-photo.svg" class="filters__icon" width="22" height="18">
                         </a>

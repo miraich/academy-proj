@@ -2,7 +2,7 @@
 
 namespace App\Actions;
 
-use App\Mail\NotificateSubscribed;
+use App\Mail\NotifySubscribed;
 use App\Mail\UserSubscribed;
 use App\Models\Post;
 use App\Models\Subscription;
@@ -15,8 +15,10 @@ class NotifySubscribedAction
     {
         $subscriptions = Subscription::where('author', $post->user_id)->get();
         foreach ($subscriptions as $subscription) {
-            $user = User::find($subscription->subscribed);
-            Mail::to($user)->later(now()->addMinutes(5), new NotificateSubscribed($user, $post));
+            $user = User::find($subscription->subscriber);
+            if ($user->exists()) {
+                Mail::to($user)->later(now()->addMinutes(5), new NotifySubscribed($user, $post));
+            }
         }
     }
 }

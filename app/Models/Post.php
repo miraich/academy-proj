@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = [
         'user_id',
@@ -21,10 +22,15 @@ class Post extends Model
         'views',
     ];
 
-    public function likes()
+    public function toSearchableArray(): array
     {
-        return $this->hasMany(Like::class,'post_id');
+        return [
+            'title' => $this->title,
+            'content' => $this->content,
+        ];
     }
+
+
 
     public function user()
     {
@@ -33,12 +39,17 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc')->with('user');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'post_id');
     }
 
 

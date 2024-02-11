@@ -19,10 +19,11 @@
                 micro blogging
             </p>
         </div>
-        <form class="header__search-form form" action="#" method="get">
+        <form class="header__search-form form" action="{{route('search_by_tag_or_content')}}" method="get">
+
             <div class="header__search">
                 <label class="visually-hidden">Поиск</label>
-                <input class="header__search-input form__input" type="search">
+                <input class="header__search-input form__input" type="search" name="search_content">
                 <button class="header__search-button button" type="submit">
                     <img class="header__search-icon" src="{{asset('img/icon-search.svg')}}" width="18" height="18">
                     <span class="visually-hidden">Начать поиск</span>
@@ -187,8 +188,7 @@
         </div>
     </div>
 </footer>
-
-@yield('filters-js')
+{{--@yield('filters-js')--}}
 <script src="{{asset('js/util.js')}}"></script>
 <script src="{{asset('js/modal.js')}}"></script>
 {{--<script src="{{asset('libs/dropzone.js')}}"></script>--}}

@@ -93,7 +93,7 @@ class PostCreationService implements PostInterface
                     'user_id' => Auth::user()->id,
                     'title' => $request->quote_heading,
                     'content' => $request->quote_text,
-                    'quote_user_id' => $request->quote_user_id,
+                    'quote_author' => $request->quote_author,
                 ]);
 
                 $this->tagService->set_tags($request->input('tags'));

@@ -10,19 +10,19 @@
                 <h2 class="visually-hidden">Публикация</h2>
                 @switch($post->category)
                     @case(\App\Enums\CategoryEnum::PHOTO->value)
-                        @include('post-types.post-photo')
+                        @include('post-types-details.post-photo')
                         @break
                     @case(\App\Enums\CategoryEnum::VIDEO->value)
-                        @include('post-types.post-video')
+                        @include('post-types-details.post-video')
                         @break
                     @case(\App\Enums\CategoryEnum::TEXT->value)
-                        @include('post-types.post-text')
+                        @include('post-types-details.post-text')
                         @break
                     @case(\App\Enums\CategoryEnum::QUOTE->value)
-                        @include('post-types.post-quote')
+                        @include('post-types-details.post-quote')
                         @break
                     @case(\App\Enums\CategoryEnum::LINK->value)
-                        @include('post-types.post-link')
+                        @include('post-types-details.post-link')
                         @break
                 @endswitch
             </section>

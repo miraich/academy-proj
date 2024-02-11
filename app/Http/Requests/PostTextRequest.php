@@ -23,7 +23,7 @@ class PostTextRequest extends FormRequest
     {
         return [
             'text_heading' => 'required|string',
-            'description' => 'required|string|max:70',
+            'description' => 'required|string|max:500',
             'tags' => ['required', 'string', 'regex:|^(#[a-zA-Zа-яА-Я0-9]+ *)+$|'],
         ];
     }
