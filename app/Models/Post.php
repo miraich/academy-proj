@@ -20,6 +20,7 @@ class Post extends Model
         'video',
         'link',
         'views',
+        'isRepost'
     ];
 
     public function toSearchableArray(): array
@@ -29,7 +30,6 @@ class Post extends Model
             'content' => $this->content,
         ];
     }
-
 
 
     public function user()
@@ -51,6 +51,7 @@ class Post extends Model
     {
         return $this->hasMany(Like::class, 'post_id');
     }
+
 
 
 }

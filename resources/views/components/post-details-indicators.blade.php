@@ -22,13 +22,27 @@
             <span>{{$post->comments()->count()}}</span>
             <span class="visually-hidden">количество комментариев</span>
         </a>
-        <a class="post__indicator post__indicator--repost button" href="#"
-           title="Репост">
-            <img src="{{asset('img/icon-repost.svg')}}" class="post__indicator-icon" width="19"
-                 height="17">
-            <span>5</span>
-            <span class="visually-hidden">количество репостов</span>
-        </a>
+        @if(auth()->user()->id !== $post->user_id)
+            <form action="{{route('repost',$post->id)}}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="post__indicator post__indicator--repost button"
+                        title="Репост">
+                    <img src="{{asset('img/icon-repost.svg')}}" class="post__indicator-icon" width="19"
+                         height="17">
+                    <span>0</span>
+                    <span class="visually-hidden">количество репостов</span>
+                </button>
+            </form>
+        @else
+            <button type="submit" class="post__indicator post__indicator--repost button"
+                    title="Репост">
+                <img src="{{asset('img/icon-repost.svg')}}" class="post__indicator-icon" width="19"
+                     height="17">
+                <span>0</span>
+                <span class="visually-hidden">количество репостов</span>
+            </button>
+        @endif
     </div>
 
     <span class="post__view">500</span>

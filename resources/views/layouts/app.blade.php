@@ -12,7 +12,7 @@
 <header class="header">
     <div class="header__wrapper container">
         <div class="header__logo-wrapper">
-            <a class="header__logo-link" href="{{route('feed')}}">
+            <a class="header__logo-link" href="{{route('feed','category=all')}}">
                 <img class="header__logo" src="{{asset('img/logo.svg')}}" alt="Логотип readme" width="128" height="24">
             </a>
             <p class="header__topic">
@@ -34,12 +34,12 @@
             <nav class="header__nav">
                 <ul class="header__my-nav">
                     <li class="header__my-page header__my-page--popular">
-                        <a class="header__page-link" href="{{route('popular')}}" title="Популярный контент">
+                        <a class="header__page-link" href="{{route('popular','category=all')}}" title="Популярный контент">
                             <span class="visually-hidden">Популярный контент</span>
                         </a>
                     </li>
                     <li class="header__my-page header__my-page--feed">
-                        <a class="header__page-link" href="{{route('feed')}}" title="Моя лента">
+                        <a class="header__page-link" href="{{route('feed','category=all')}}" title="Моя лента">
                             <span class="visually-hidden">Моя лента</span>
                         </a>
                     </li>
@@ -64,7 +64,7 @@
 
                     @auth
                         <li class="header__profile">
-                            <a class="header__profile-link" href="#">
+                            <a class="header__profile-link" href="{{route('profile',auth()->user()->id)}}">
                                 <div class="header__avatar-wrapper">
                                     <img class="header__profile-avatar"
                                          src="{{asset('storage/avatars/'.auth()->user()->avatar)}}"
@@ -81,7 +81,7 @@
                                 <div class="header__profile-tooltip">
                                     <ul class="header__profile-nav">
                                         <li class="header__profile-nav-item">
-                                            <a class="header__profile-nav-link" href="#">
+                                            <a class="header__profile-nav-link" href="{{route('profile',auth()->user()->id)}}">
                           <span class="header__profile-nav-text">
                             Мой профиль
                           </span>
@@ -188,9 +188,10 @@
         </div>
     </div>
 </footer>
+{{--{{ddd()}}--}}
 {{--@yield('filters-js')--}}
-<script src="{{asset('js/util.js')}}"></script>
-<script src="{{asset('js/modal.js')}}"></script>
+{{--<script src="{{asset('js/util.js')}}"></script>--}}
+{{--<script src="{{asset('js/modal.js')}}"></script>--}}
 {{--<script src="{{asset('libs/dropzone.js')}}"></script>--}}
 {{--<script src="{{asset('build/js/dropzone-settings.js')}}"></script>--}}
 {{--<script src="{{asset('js/sorting.js')}}"></script>--}}

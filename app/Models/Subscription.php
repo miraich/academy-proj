@@ -14,9 +14,14 @@ class Subscription extends Model
         'subscriber'
     ];
 
-    public function users()
+    public function user_author()
     {
-        return $this->BelongsTo(User::class);
+        return $this->BelongsTo(User::class, 'author', 'id');
+    }
+
+    public function user_subscriber()
+    {
+        return $this->BelongsTo(User::class, 'subscriber', 'id');
     }
 
 

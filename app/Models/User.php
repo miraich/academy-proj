@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -50,17 +51,37 @@ class User extends Authenticatable
         return $this->hasMany(Like::class)->where('post_id', $post_id);
     }
 
+    public function users_who_liked(int $author_id)
+    {
+        return $this->hasMany(Like::class)->where('user_id', $author_id);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
 
-    public function subscriptions()
+    public function get_posts_count()
+    {
+        return $this->hasMany(Post::class)->count();
+    }
+
+    public function get_subscribers_count()
+    {
+        return $this->hasMany(Subscription::class, 'author')->count();
+    }
+
+    public function author()
     {
         return $this->hasMany(Subscription::class, 'author');
     }
 
-    public function subscriber(int $author_id)
+    public function subscriber(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'subscriber');
+    }
+
+    public function subscribed_on_author(int $author_id)
     {
         return $this->hasMany(Subscription::class, 'subscriber')->where('author', $author_id);
     }

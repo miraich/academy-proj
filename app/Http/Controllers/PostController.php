@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\RepostAction;
 use App\Enums\CategoryEnum;
 use App\Http\Requests\PostLinkRequest;
 use App\Http\Requests\PostPhotoRequest;
@@ -12,6 +13,7 @@ use App\Interfaces\PostInterface;
 use App\Interfaces\TagCreationInteface;
 use App\Interfaces\ThumbnailRepository;
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -82,5 +84,12 @@ class PostController extends Controller
         $postCreationService->handle($request);
 
         return redirect(route('show_post', $postCreationService->postId));
+    }
+
+    public function create_repost(Post $post, RepostAction $action)
+    {
+        $action->handle($post);
+
+        return redirect(route('profile', auth()->user()->id));
     }
 }

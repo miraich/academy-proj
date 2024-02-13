@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('category')->constrained()->cascadeOnDelete();
+            $table->boolean('isRepost')->nullable();
             $table->string('title')->nullable()->fulltext();
             $table->text('content')->nullable()->fulltext();
             $table->string('quote_author')->nullable();

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\SearchByCategoryAction;
+use App\Actions\SortingPopularAction;
 use App\Actions\SearchByTagOrContentAction;
 use App\Interfaces\TagCreationInteface;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function search_by_category(Request $request, SearchByCategoryAction $action)
+    public function search_by_category(Request $request, SortingPopularAction $action)
     {
         $posts = $action->handle($request);
 

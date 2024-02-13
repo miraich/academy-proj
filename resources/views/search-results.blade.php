@@ -16,25 +16,29 @@
             <div class="search__results-wrapper">
                 <div class="container">
                     <div class="search__content">
-                        @foreach($posts as $post)
-                            @switch($post->category)
-                                @case(\App\Enums\CategoryEnum::PHOTO->value)
-                                    @include('posts-types-feed.post-photo')
-                                    @break
-                                @case(\App\Enums\CategoryEnum::VIDEO->value)
-                                    @include('posts-types-feed.post-video')
-                                    @break
-                                @case(\App\Enums\CategoryEnum::TEXT->value)
-                                    @include('posts-types-feed.post-text')
-                                    @break
-                                @case(\App\Enums\CategoryEnum::QUOTE->value)
-                                    @include('posts-types-feed.post-quote')
-                                    @break
-                                @case(\App\Enums\CategoryEnum::LINK->value)
-                                    @include('posts-types-feed.post-link')
-                                    @break
-                            @endswitch
-                        @endforeach
+                        @if(isset($posts))
+                            @foreach($posts as $post)
+                                @switch($post->category)
+                                    @case(\App\Enums\CategoryEnum::PHOTO->value)
+                                        @include('posts-types-feed.post-photo')
+                                        @break
+                                    @case(\App\Enums\CategoryEnum::VIDEO->value)
+                                        @include('posts-types-feed.post-video')
+                                        @break
+                                    @case(\App\Enums\CategoryEnum::TEXT->value)
+                                        @include('posts-types-feed.post-text')
+                                        @break
+                                    @case(\App\Enums\CategoryEnum::QUOTE->value)
+                                        @include('posts-types-feed.post-quote')
+                                        @break
+                                    @case(\App\Enums\CategoryEnum::LINK->value)
+                                        @include('posts-types-feed.post-link')
+                                        @break
+                                @endswitch
+                            @endforeach
+                        @else
+                            @include('no-results')
+                        @endif
                     </div>
                 </div>
             </div>
