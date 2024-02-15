@@ -13,7 +13,7 @@ class SortingPopularAction
         switch ($request->category) {
             case 'popular': //заглушка
             case 'all':
-                return Post::with(['user', 'tags',])
+                return Post::with(['user', 'tags'])
                     ->where('user_id', '!=', auth()->user()->id)
                     ->orderByDesc('created_at')
                     ->simplePaginate(6)
@@ -71,6 +71,12 @@ class SortingPopularAction
                 return Post::with(['user', 'tags',])
                     ->where('user_id', '!=', auth()->user()->id)
                     ->orderBy('created_at', 'asc')
+                    ->simplePaginate(6)
+                    ->withQueryString();
+            default:
+                return Post::with(['user', 'tags'])
+                    ->where('user_id', '!=', auth()->user()->id)
+                    ->orderByDesc('created_at')
                     ->simplePaginate(6)
                     ->withQueryString();
         }

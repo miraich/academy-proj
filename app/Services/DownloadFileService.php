@@ -31,22 +31,26 @@ class DownloadFileService implements DownloadFileInterface
         $this->name = $name;
     }
 
-    public function download_file_by_url(?string $url, string $folder_name): void
+    public function download_file_by_url(?string $url, string $folder_name): bool
     {
         if (isset($url)) {
             $file = file_get_contents($url);
-            $this->set_filename(md5(time()));
-            $this->set_ext(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION));
+            if ($file !== false) {
+                $this->set_filename(md5(time()));
+                $this->set_ext(pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION));
 
-            Storage::put("/" . $folder_name . "/" . $this->get_filename() . "." . $this->get_ext(), $file);
+                return Storage::put("/" . $folder_name . "/" . $this->get_filename() . "." . $this->get_ext(), $file);
+            }
+
         }
+        return false;
     }
 
     public function download_file_form(?UploadedFile $file, string $folder_name): void
     {
         if (isset($file)) {
-            $file = Storage::put($folder_name, $file);
-            $this->set_filename(basename($file));
+            Storage::put($folder_name, $file);
+            $this->set_filename($file->hashName());
         }
     }
 }

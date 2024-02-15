@@ -6,6 +6,6 @@ class LandingController
 {
     function index()
     {
-        return view('layouts.landing');
+        return view('layouts.main');
     }
 }

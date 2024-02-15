@@ -23,7 +23,7 @@ class PostVideoRequest extends FormRequest
     {
         return [
             'video_heading' => 'required|string',
-            //правило валидации url:youtube не работает, хотя пример есть в документации
+            //правило валидации url:youtube не работает, хотя пример есть в документации, пришлось использовать regex
             'video_link' => ['required', 'regex:|https?://(?:www\.)?youtube\.com/watch\?v=|', 'active_url'],
             'tags' => ['required', 'string', 'regex:|^(#[a-zA-Zа-яА-Я0-9]+ *)+$|'],
         ];

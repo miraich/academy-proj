@@ -21,7 +21,6 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 2,
             'title' => fake()->word,
             'content' => fake()->sentence,
             'category' => CategoryEnum::TEXT->value

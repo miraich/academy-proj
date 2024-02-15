@@ -14,6 +14,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/scout": "^10.8",
         "laravel/tinker": "^2.8",
+        "phpunit/phpunit-mock-objects": "^1.2",
         "ralouphie/mimey": "^1.0"
     },
     "require-dev": {

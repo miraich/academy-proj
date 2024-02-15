@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function register(RegisterUserRequest $request, DownloadFileService $action)
     {
-        $action->download_file_form($request->file('userpic_file'),'avatars');
+        $action->download_file_form($request->file('userpic_file'), 'avatars');
 
         $user = User::create([
             'login' => $request->login,
@@ -35,9 +35,8 @@ class AuthController extends Controller
             'avatar' => $action->get_filename()
         ]);
 
-        \auth()->login($user);
 
-        return redirect(route('feed'));
+        return redirect(route('login'));
     }
 
     public function login(LoginUserRequest $request)
@@ -46,7 +45,7 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
 
-            return redirect(route('feed'));
+            return redirect(route('feed') . "?category=all");
         }
         return back()->with(['error_not_exist' => 'Такого пользователя не существует']);
     }

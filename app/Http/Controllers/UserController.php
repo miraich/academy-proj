@@ -10,9 +10,12 @@ class UserController extends Controller
 {
     public function show_profile(User $user, GetProfileLikesAction $action)
     {
-        $posts = $user->posts;
+
+        $posts = $user->posts()->with('tags')->get();
+        $postIds = $posts->pluck('id')->all();
+        $likes = $action->handle($user, $postIds);
         $subscriptions = $user->subscriber;
-        $likes = $action->handle($user, $posts);
+
         return view('profile', [
             'user' => $user,
             'posts' => $posts,

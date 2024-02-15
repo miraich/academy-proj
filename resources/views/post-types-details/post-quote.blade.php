@@ -12,7 +12,7 @@
         @include('components.post-tags')
         @include('components.post-details-comments')
     </div>
-    @if(auth()->user()->id!==$post->author)
+    @if(auth()->user()->id!==$post->user_id)
         @include('components.post-details-user-block')
     @endif
 </div>

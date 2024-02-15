@@ -20,7 +20,7 @@ class ThumbnailService implements ThumbnailRepository
     {
         $response = $this->httpClient->sendRequest($this->create_request($url));
 
-        $name = md5(time());
+        $name = hash('md5', $url);
         $extension = $this->mimes->getExtension($response->getHeaderLine('Content-Type')); //Библиотека для получения расширения файла из headers Content-Type
         $this->preview_path = $name . "." . $extension;
 

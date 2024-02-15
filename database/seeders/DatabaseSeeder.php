@@ -25,9 +25,15 @@ class DatabaseSeeder extends Seeder
 //            ''
 //        ]);
 
-        $post = Post::factory(15)
-            ->has(Tag::factory()->count(5))
-            ->create();
-
+//        $post = Post::factory(15)
+//            ->has(Tag::factory()->count(5))
+//            ->create();
+        DB::table('categories')->insert([
+            ['name' => 'photo', 'icon' => 'photo'],
+            ['name' => 'video', 'icon' => 'video'],
+            ['name' => 'text', 'icon' => 'text'],
+            ['name' => 'quote', 'icon' => 'quote'],
+            ['name' => 'link', 'icon' => 'link'],
+        ]);
     }
 }

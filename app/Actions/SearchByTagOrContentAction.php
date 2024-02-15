@@ -17,10 +17,10 @@ class SearchByTagOrContentAction
             if (str_starts_with($search_content, '#')) {
                 $service->set_tags($search_content);
                 $tags = $service->get_tags();
-                $tags = Tag::whereIn('name', $tags);
-                if ($tags->exists()) {
-                    foreach ($tags->get() as $tag) {
-                        foreach ($tag->posts()->with(['user', 'comments', 'likes'])->get() as $post) {
+                $tags = Tag::whereIn('name', $tags)->with(['posts'])->get();
+                if (!$tags->isEmpty()) {
+                    foreach ($tags as $tag) {
+                        foreach ($tag->posts as $post) {
                             $posts[] = $post;
                         }
                     }

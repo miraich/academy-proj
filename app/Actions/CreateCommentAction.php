@@ -10,7 +10,8 @@ class CreateCommentAction
 {
     public function handle(CommentRequest $request)
     {
-        if ($post = Post::find($request->post_id)) {
+        $post = Post::find($request->post_id);
+        if ($post->exists()) {
             Comment::create([
                 'content' => $request->comment,
                 'post_id' => $request->post_id,
