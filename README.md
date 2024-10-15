@@ -18,7 +18,7 @@ composer install --ignore-platform-reqs
 
 Заполнить поля по умолчанию на: 
 
-DB_CONNECTION=mysql
+DB_CONNECTION=mysql \n
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=academy_proj
