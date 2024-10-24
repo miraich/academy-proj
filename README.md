@@ -43,8 +43,11 @@ MAIL_FROM_NAME="${APP_NAME}"
 SCOUT_DRIVER=database
 ```
 
-Установите js зависимости npm i
-билдим css npm run build
+Установите js зависимости
+``npm i``
+билдим css 
+``npm run build``
+
 в шаблоне layouts.app.blade.php установим наш сгенерируемый css файл в head
 
 запуск проекта
