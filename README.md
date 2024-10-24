@@ -6,14 +6,14 @@ Docker desktop + wsl
 Папку с проектом необходимо перенести в директорию wsl .../home/user/
 
 Прописать в консоли wsl, находясь в папке с проектом, тем самым установив зависимости
-
+```
 docker run --rm \
 -u "$(id -u):$(id -g)" \
 -v "$(pwd):/var/www/html" \
 -w /var/www/html \
 laravelsail/php83-composer:latest \
 composer install --ignore-platform-reqs
-
+```
 создать файл .env, скопировать в него все из .env.example
 
 Заполнить поля по умолчанию на: 
@@ -47,17 +47,23 @@ SCOUT_DRIVER=database
 билдим css npm run build
 в шаблоне layouts.app.blade.php установим наш сгенерируемый css файл в head
 
-запуск проекта vendor/bin/sail up
+запуск проекта
+``vendor/bin/sail up``
 
-При необходимости сгенерируйте ключ приложения vendor/bin/sail artisan key:generate
+При необходимости сгенерируйте ключ приложения
+``vendor/bin/sail artisan key:generate``
 
-Создайте симлинк vendor/bin/sail artisan storage:link
+Создайте симлинк
+``vendor/bin/sail artisan storage:link``
 
-Запустите миграции vendor/bin/sail artisan migrate
+Запустите миграции 
+``vendor/bin/sail artisan migrate``
 
-Cгенерируем некоторые записи в бд, необходимые для работы проекта vendor/bin/sail artisan db:seed
+Cгенерируем некоторые записи в бд, необходимые для работы проекта
+``vendor/bin/sail artisan db:seed``
 
-Запустим очередь vendor/bin/sail artisan queue:work
+Запустим очередь
+``vendor/bin/sail artisan queue:work``
 
 Не сделано: функционал личных сообщений, некоторые тесты не дописаны
 
