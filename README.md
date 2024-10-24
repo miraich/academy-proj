@@ -56,7 +56,7 @@ SCOUT_DRIVER=database
 При необходимости сгенерировать ключ приложения
 ``vendor/bin/sail artisan key:generate``
 
-Создайть симлинк
+Создать симлинк
 ``vendor/bin/sail artisan storage:link``
 
 Запустить миграции 
