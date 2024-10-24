@@ -18,7 +18,7 @@ composer install --ignore-platform-reqs
 
 Заполнить поля по умолчанию на: 
 
-DB_CONNECTION=mysql
+`DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=academy_proj
@@ -40,7 +40,7 @@ MAIL_PASSWORD=ваш_ключ_приложения
 MAIL_FROM_ADDRESS="ваш_email"
 MAIL_FROM_NAME="${APP_NAME}"
 
-SCOUT_DRIVER=database
+SCOUT_DRIVER=database`
 
 Установите js зависимости npm i
 билдим css npm run build
