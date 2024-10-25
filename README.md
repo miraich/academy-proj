@@ -1,5 +1,7 @@
 часы, затраченные на проект - примерно 50
 
+[Техническое задание](https://htmlacademy.notion.site/ReadMe-ed8f0d8b58414c7ba6cd23699977fbf1) 
+
 Развертывание: laravel sail
 Docker desktop + wsl
 
