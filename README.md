@@ -1,4 +1,4 @@
-часы, затраченные на проект - примерно 50
+Часы, затраченные на проект - примерно 50
 
 [Техническое задание](https://htmlacademy.notion.site/ReadMe-ed8f0d8b58414c7ba6cd23699977fbf1) 
 
@@ -16,7 +16,7 @@ docker run --rm \
 laravelsail/php83-composer:latest \
 composer install --ignore-platform-reqs
 ```
-создать файл .env, скопировать в него все из .env.example
+Создать файл .env, скопировать в него все из .env.example
 
 Заполнить поля по умолчанию на: 
 ```
@@ -47,12 +47,12 @@ SCOUT_DRIVER=database
 
 Установить js зависимости
 ``npm i``
-билд css 
+Билд css 
 ``npm run build``
 
-в шаблоне layouts.app.blade.php установить сгенерируемый css файл в head
+В шаблоне layouts.app.blade.php установить сгенерируемый css файл в head
 
-запуск проекта
+Запуск проекта
 ``vendor/bin/sail up``
 
 При необходимости сгенерировать ключ приложения
@@ -64,13 +64,13 @@ SCOUT_DRIVER=database
 Запустить миграции 
 ``vendor/bin/sail artisan migrate``
 
-Cгенерируем некоторые записи в бд, необходимые для работы проекта
+Генерация сидов
 ``vendor/bin/sail artisan db:seed``
 
 Запуск очереди
 ``vendor/bin/sail artisan queue:work``
 
-запуск тестирования ``vendor/bin/sail artisan test``
+Запуск тестирования ``vendor/bin/sail artisan test``
 
 
 
