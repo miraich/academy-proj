@@ -2,7 +2,8 @@
 
 [Техническое задание](https://htmlacademy.notion.site/ReadMe-ed8f0d8b58414c7ba6cd23699977fbf1) 
 
-Развертывание: laravel sail
+Развертывание: 
+laravel sail,
 Docker desktop + wsl
 
 Папку с проектом необходимо перенести в директорию wsl /home/user/...
@@ -37,9 +38,9 @@ QUEUE_CONNECTION=database
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=465
-MAIL_USERNAME=ваш_email
-MAIL_PASSWORD=ваш_ключ_приложения
-MAIL_FROM_ADDRESS="ваш_email"
+MAIL_USERNAME="${APP_EMAIL}"
+MAIL_PASSWORD="${APP_EMAIL_TOKEN}"
+MAIL_FROM_ADDRESS="${APP_EMAIL}"
 MAIL_FROM_NAME="${APP_NAME}"
 
 SCOUT_DRIVER=database
@@ -70,7 +71,8 @@ SCOUT_DRIVER=database
 Запуск очереди
 ``vendor/bin/sail artisan queue:work``
 
-Запуск тестирования ``vendor/bin/sail artisan test``
+Запуск тестирования 
+``vendor/bin/sail artisan test``
 
 
 
